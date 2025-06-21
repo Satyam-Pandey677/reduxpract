@@ -6,7 +6,6 @@ import { removeItems } from '../fetaure/cart/shoppingCart'
 const Cart = () => {
     const products = useSelector(state => state.items)
     const dispatch = useDispatch()
-    console.log(products)
 
     const handleRemoveItem = (id) => {
         dispatch(removeItems(id))

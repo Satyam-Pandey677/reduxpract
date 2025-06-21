@@ -15,7 +15,6 @@ const Home = () => {
         const response = await fetch("https://fakestoreapi.com/products")
         const data = await response.json()
         setItems(data)
-        console.log(data)
       })
       ()
   },[])
@@ -25,6 +24,7 @@ const Home = () => {
       e.preventDefault()
       
       dispatch(addItems(products))
+      localStorage.setItem("item",products)
   }
   
   return (
@@ -38,7 +38,10 @@ const Home = () => {
             <img src={item.image} alt={item.title} className='w-full h-48 object-cover' />
             <h2 className='text-xl font-semibold mt-2'>{item.title}</h2>
             <p className='text-gray-600'>${item.price}</p>
-            <Button onClick = {() => setProducts(item)}> Add To cart</Button>
+            <Button onClick = {() => {
+              setProducts(item)
+              localStorage.setItem("item", JSON.stringify(item))
+            }}> Add To cart</Button>
           </div>
         ))}
         </form>

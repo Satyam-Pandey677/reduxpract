@@ -14,7 +14,7 @@ export const shoppingCartSlice = createSlice({
                 item : action.payload
             }   
             status.items.push(cart)
-            console.log(status.items)         
+                    
         },
         removeItems : (status, action) => {
             status.items = status.items.filter((item) => item.id !== action.payload)
